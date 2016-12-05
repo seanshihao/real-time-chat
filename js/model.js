@@ -1,10 +1,10 @@
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyAyYUSp4pDlqGd3wRx1FxrfQDQedl46ULI",
-  authDomain: "realtime-chat-8f257.firebaseapp.com",
-  databaseURL: "https://realtime-chat-8f257.firebaseio.com",
-  storageBucket: "realtime-chat-8f257.appspot.com",
-  messagingSenderId: "440440851020"
+  apiKey: null,
+  authDomain: null,
+  databaseURL: null,
+  storageBucket: null,
+  messagingSenderId: null
 };
 firebase.initializeApp(config);
 
