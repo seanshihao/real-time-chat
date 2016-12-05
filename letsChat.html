@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="Chat room implement with Firebase">
+    <meta name="author" content="Sean Chou">
+    <title>Let's Chat</title>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://blackrockdigital.github.io/startbootstrap-simple-sidebar/css/simple-sidebar.css">
+    <!-- materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">     
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body onclick="pageTitleChange.Off();">
+    <nav class="light-blue lighten-1" role="navigation">
+      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Let's Chat</a>
+      <a href="#" data-activates="nav-mobile" class="button-collapse" id="menu-toggle"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav" >
+                <li class="sidebar-brand">
+                    <h5 style='color:white;'>Online</h5>
+                </li>
+                <div id="onlineList"></div>
+            </ul>
+        </div>
+        <div id="page-content-wrapper">
+            <center><span id="today"></span></center>
+            <div class="card">
+              <div id="dataArea" ></div>                    
+            </div>  
+            <input type="text" id="push_msg" placeholder="say something..." onkeypress="return mainFlow.sendMsg(event)"/> 
+        </div>
+      </div>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
+    <script src="http://sean1093.github.io/lib/js/timeSolver.js"></script>
+    <!-- materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script> 
+    <script src="js/model.js"></script>
+    <script src="js/controller.js"></script>
+    <script>
+      var uid = null;
+      var userId = null;
+      var userPhotoURL = null;
+      var online = {};
+
+      window.onbeforeunload = function (event) {
+        controllerUser.deleteUser(uid);
+      };
+
+      $(document).ready(function(){
+        //start to get Google account and add new user
+        mainFlow.start();
+        //trigger online list
+        mainFlow.showHideOnlineList();
+      });
+    </script>
+  </body>
+</html>
