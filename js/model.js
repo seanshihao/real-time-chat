@@ -173,16 +173,6 @@ var modelChangeView = {
   }
 };
 
-// var controlRoom = {
-//     privateChat: function(){
-
-//     }
-// };
-
-// function privateChat(id){
-//   this.id = id;
-// }
-
 var pageTitleChange = {   
     On: function(count){
       document.title = "("+count+") Let's Chat";
