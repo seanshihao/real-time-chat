@@ -1,4 +1,5 @@
 # real-time-chat
+
 A simply chat web application practice with Firebase and material design style. 
 
 ## Demo: 
@@ -7,18 +8,17 @@ A simply chat web application practice with Firebase and material design style.
 
 ![chat](https://github.com/sean1093/real-time-chat/blob/master/img/chat.png "chat")
 
-### Feature
+## Feature
 
 * Login with Google account
+* Mutiple user chat online
 * Shows online list
 * Auto clean chat content before today
 
-
 ## Concept
 
-* 這是一個利用 Firebase 進行 real-time chat room 的實作練習，並且運用 materialize 與 startBootstrap 的 simple-sidebar 來做頁面的美化。
+A real-time chat room samlpe implement with Firebase. Also use materialize and startBootstrap's  simple-sidebar for layout. User need to use Google account login. After user login, Firebase will add a new user in user list and register a listerner for other user message.
 
-* 主要實作登入部分，使用Google account，一登入並會去加入 Firebase 中的 user list ，並且註冊一個監聽變化的 listerner
 ```js
 firebase.database().ref('users/'+uid).set({
     id: userId,
@@ -29,7 +29,8 @@ firebase.database().ref('users/'+uid).set({
 });
 ```
 
-* 當 Firebase 收到任何 user 新增或是減少都會 push 通知過來，並且在前端的 view 做 online list 的刷新
+When Firebase get any user event, it will refresh online list.
+
 ```js
 firebase.database().ref('users/').on('child_added', function(snapshot) {
     // do something
